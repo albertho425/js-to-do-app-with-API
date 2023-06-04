@@ -19,11 +19,27 @@
     </head>
 
 <div class="app">
-    <h4 class="mb-3">TODO App</h4>
+    <h4 class="mb-3 text-center">TO DO App with API</h4>
 
-    <span class="data" id="localTime">Time</span>
-    <span class="" id="weatherIcon"></span>
-    <span class="data" id="weatherTemp"></span>
+    <div class="table-responsive">
+      <table class="table">
+      <tbody>
+        <tr class="">
+          <td><span class="data" id="weatherIcon"></span></td>
+          <td><span class="data" id="weatherTemp"></span><span> F</span></td>
+          <td><span class="data" id="countryEmoji"></span></td>
+        </tr>
+        
+      </tbody>
+      </table>
+    
+    <!-- <span class="" id="weatherIcon">WeatherIcon</span> -->
+    <div class="date text-center">
+      <span class="data" id="localTime">Time</span>
+    </div>
+    
+    <!-- <span class="" id="countryEmoji">Country</span> -->
+    <!-- <span class="data" id="weatherTemp">Temperature</span> -->
 
   
     <div id="addNew" data-bs-toggle="modal" class="text-center" data-bs-target="#form">
@@ -72,7 +88,7 @@
           rows="1"
         ></textarea>
         <p>Progress</p>
-          <input type="number" class="form-control" name="" id="progressInput" />
+          <input type="number" class="form-control" name="" id="progressInput" placeholder="% complete" />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

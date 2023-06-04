@@ -8,6 +8,7 @@ weatherAPIKey = "ca80ffda470e4eca8e4235808230905";
 mapAPIKey = "aG8NIzp3QrvPAfPAcatmWUYjhlHsaOcy";
 geoAPIkey = "eec122638c9e4b6397e0c2634019c4bc"
 
+//variables for form and modal
 let form = document.getElementById("form");
 let textInput = document.getElementById("textInput");
 let dateInput = document.getElementById("dateInput");
@@ -18,6 +19,14 @@ let tasks = document.getElementById("tasks");
 let add = document.getElementById("add");
 //local storage
 let data = [{}];
+
+//variables for API
+let dateTime = document.getElementById("localTime");
+let weatherIcon = document.getElementById("weatherIcon");
+let weatherTemp = document.getElementById("weatherTemp");
+let countryIcon = document.getElementById("countryEmoji");
+
+
 
 window.onload = getData();
 
@@ -39,7 +48,7 @@ async function getData() {
           let ipAdress = result.ip;
           
           let countryCode = result.country_code;
-          // let countryEmoji = getFlagEmoji(countryCode);
+          getFlagEmoji(countryCode);
           
           console.log(ipAdress);
           
@@ -64,9 +73,6 @@ async function getData() {
 
 async function getWeatherData(ipAddressInput) {
 
-  let ipAddressValue = ipAddressInput;
-  
-
    const weatherUrl = "https://api.weatherapi.com/v1/current.json?key=" + weatherAPIKey + "&q=" + ipAddressInput + "&aqi=no";
    
   try {
@@ -86,6 +92,9 @@ async function getWeatherData(ipAddressInput) {
           console.log("The weather icon is: " + theWeatherIcon);
           console.log("The date/time is: " + dateTime);
 
+          outPutWeather(theWeather);
+          outputDateTime(dateTime);
+          outputWeahterIcon(theWeatherIcon);
       }
 
      
@@ -97,6 +106,47 @@ async function getWeatherData(ipAddressInput) {
   }
 }
 
+/**
+ * Output the weather from API
+ * @param {*} e 
+ */
+
+let outPutWeather = (e) => {
+  weatherTemp.innerHTML = e;
+}
+
+/**
+ * Output the date/time from API
+ * @param {*} e 
+ */
+
+let outputDateTime = (e) => {
+  dateTime.innerHTML = e;
+}
+
+/**
+ * Output the weather icon from API
+ * @param {*} e 
+ */
+
+let outputWeahterIcon = (e) => {
+  weatherIcon.innerHTML = "<img class='weather-icon' src='https:" + e +  "'>";
+  
+}
+
+/**
+ * Output the country emoji from API
+ * @param {*} e 
+ * @returns the country emoji
+ */
+let getFlagEmoji = (e) => {
+  
+  let countryEmoji =  e.toUpperCase().replace(/./g, char => 
+        String.fromCodePoint(127397 + char.charCodeAt())
+    );
+    console.log(countryEmoji);
+    countryIcon.innerHTML = countryEmoji;
+  }
 
 /**
  * Add event listener and validate form

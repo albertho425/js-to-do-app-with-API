@@ -80,3 +80,15 @@ body {
   .small {
     color: white !important;
   }
+  #countryEmoji {
+    font-size: 40px;
+    // padding: 5px;
+  }
+
+  .data {
+    padding: 5px;
+  }
+
+  #weatherTemp {
+    font-size: 32px;
+  }
