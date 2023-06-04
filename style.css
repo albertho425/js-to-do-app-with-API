@@ -28,20 +28,26 @@ body {
     padding: 15px;
 }
   
+.modal-body {
+    background-color: #BF988F;
+    // max-height: 75vh;
+    
+  }
+  
+.modal-dialog {
+    top: 19vh;
+    right: 0vw;
+}
 
   #addNew {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(171, 206, 161, 0.35);
+  background-color:  #595775;
+  color: white;
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
-}
-.fa-plus {
-  background-color: #abcea1;
-  padding: 3px;
-  border-radius: 3px;
 }
 
 #msg {
@@ -57,10 +63,21 @@ body {
   
   #tasks div {
     border: 3px solid #abcea1;
-    background-color: #e2eede;
+    background-color: #595775;
+    color: white;
+    
     border-radius: 6px;
     padding: 5px;
     display: grid;
     gap: 4px;
   }
   
+  .crud {
+    font-size: 32px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .small {
+    color: white !important;
+  }
