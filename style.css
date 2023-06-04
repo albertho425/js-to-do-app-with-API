@@ -32,12 +32,12 @@ body {
 
 .modal-body {
     background-color: #BF988F;
-    // max-height: 75vh;
+    
     
   }
   
 .modal-dialog {
-    top: 19vh;
+    top: 12vh;
     right: 0vw;
 }
 

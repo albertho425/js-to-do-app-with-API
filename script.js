@@ -3,6 +3,11 @@
  * Declare all variables
  */
 
+
+weatherAPIKey = "ca80ffda470e4eca8e4235808230905";
+mapAPIKey = "aG8NIzp3QrvPAfPAcatmWUYjhlHsaOcy";
+geoAPIkey = "eec122638c9e4b6397e0c2634019c4bc"
+
 let form = document.getElementById("form");
 let textInput = document.getElementById("textInput");
 let dateInput = document.getElementById("dateInput");
@@ -13,6 +18,85 @@ let tasks = document.getElementById("tasks");
 let add = document.getElementById("add");
 //local storage
 let data = [{}];
+
+window.onload = getData();
+
+/**
+ *  Get location data from API
+ */
+
+async function getData() {
+
+  const apiURL =  "https://ipapi.co/json/"
+    
+  try {
+      const response = await fetch(apiURL, {cache: "no-cache"});
+      const result = await response.json();
+  
+      if (response.ok) {
+          console.log("the IP API result is: " , result);
+         
+          let ipAdress = result.ip;
+          
+          let countryCode = result.country_code;
+          // let countryEmoji = getFlagEmoji(countryCode);
+          
+          console.log(ipAdress);
+          
+          getWeatherData(ipAdress);
+
+
+      }
+
+  } catch (error) {
+      if (error) throw error;
+      console.log("IP address API error ", error);
+  
+  }
+}
+
+
+/**
+ * Get the weather data from API
+ * @param {*} ipAddressInput
+ * 
+ */
+
+async function getWeatherData(ipAddressInput) {
+
+  let ipAddressValue = ipAddressInput;
+  
+
+   const weatherUrl = "https://api.weatherapi.com/v1/current.json?key=" + weatherAPIKey + "&q=" + ipAddressInput + "&aqi=no";
+   
+  try {
+      const weatherResponse = await fetch(weatherUrl, {cache: "no-cache"});
+      const weatherResult = await weatherResponse.json();
+
+
+      if (weatherResponse.ok) {
+          console.log("the Weather API result is: " , weatherResult);
+
+          let theWeather = weatherResult.current.temp_f;
+          
+          let theWeatherIcon = weatherResult.current.condition["icon"];
+          let dateTime = weatherResult.location.localtime;
+          
+          console.log("The weather is: " + theWeather);
+          console.log("The weather icon is: " + theWeatherIcon);
+          console.log("The date/time is: " + dateTime);
+
+      }
+
+     
+
+  } catch (error) {
+      if (error) throw error;
+      console.log("Weather API error: ", error);
+  
+  }
+}
+
 
 /**
  * Add event listener and validate form
@@ -81,9 +165,8 @@ let createTasks = () => {
     data.map((x, y) => {
       return (tasks.innerHTML += `
       <div id=${y}>
-            <span class="fw-bold">${x.text}</span>
-            <span class="small text-secondary">${x.date}</span>
-            
+            <span class="fw-bold text-center">${x.text}</span>
+            <span class="small text-secondary"> ${x.date}</span>
             <span>${x.description}</span>
             <span class="">${x.progress}</span>
 
