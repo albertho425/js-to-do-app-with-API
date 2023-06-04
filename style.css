@@ -15,7 +15,7 @@ body {
 
   .bi-plus-circle {
     font-size: 48px;
-    color: red;
+    color: #595775;
     
   }
 
@@ -26,8 +26,10 @@ body {
     border: 5px solid #595775;
     border-radius: 8px;
     padding: 15px;
+    overflow-y: scroll;
 }
   
+
 .modal-body {
     background-color: #BF988F;
     // max-height: 75vh;
@@ -40,11 +42,8 @@ body {
 }
 
   #addNew {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color:  #595775;
-  color: white;
+
+  color: #595775;
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
