@@ -17,6 +17,7 @@ let textarea = document.getElementById("textarea");
 let msg = document.getElementById("msg");
 let tasks = document.getElementById("tasks");
 let add = document.getElementById("add");
+let numOfTasks = document.getElementById("numOfTasks");
 //local storage
 let data = [{}];
 
@@ -29,6 +30,7 @@ let countryIcon = document.getElementById("countryEmoji");
 
 
 window.onload = getData();
+// window.onload = getNumOfTasks();
 
 /**
  *  Get location data from API
@@ -54,7 +56,7 @@ async function getData() {
           
           getWeatherData(ipAdress);
 
-
+          getNumOfTasks();
       }
 
   } catch (error) {
@@ -239,6 +241,7 @@ let createTasks = () => {
     console.log("creating progress: " + progressInput.value);
     console.log(JSON.stringify(data));
     
+    getNumOfTasks();
     resetForm();
   };
 
@@ -270,6 +273,7 @@ let createTasks = () => {
     localStorage.setItem("data", JSON.stringify(data));
   
     console.log(data);
+    getNumOfTasks();
   };
   
   /**
@@ -305,7 +309,12 @@ let createTasks = () => {
     deleteTask(e);
     console.log(JSON.stringify(data));
   };
-  
+
+  let getNumOfTasks = () => {
+    let theNumOfTasks = data.length;
+    numOfTasks.innerHTML = theNumOfTasks;
+
+  }
 
   /**
    * Get data from local storage
@@ -317,3 +326,4 @@ let createTasks = () => {
     createTasks();
   })();
   
+
