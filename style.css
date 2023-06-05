@@ -31,7 +31,8 @@ body {
   
 
 .modal-body {
-    background-color: #BF988F;
+    background-color:#ABA6BF;
+    height: 500px;
     
     
   }
@@ -61,7 +62,7 @@ body {
   }
   
   #tasks div {
-    border: 3px solid #abcea1;
+    border: 3px solid #ABA6BF;
     background-color: #595775;
     color: white;
     
@@ -91,4 +92,18 @@ body {
 
   #weatherTemp {
     font-size: 32px;
+  }
+
+  .bi-check2-circle::before {
+    color: #ABA6BF !important;
+    font-size: 32px;
+  }
+
+  .btn-primary {
+    background-color: #ABA6BF;
+    
+  }
+
+  .btn-secondary {
+    background-color:#595775;
   }
